@@ -7,6 +7,6 @@ import org.bukkit.event.inventory.InventoryClickEvent
 class OnInventoryClick : Listener {
     @EventHandler
     fun onInventoryClick(event: InventoryClickEvent) {
-
+        
     }
 }
