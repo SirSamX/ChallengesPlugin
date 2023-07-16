@@ -7,6 +7,7 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.command.TabCompleter
+import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
@@ -19,10 +20,14 @@ class Kit : CommandExecutor, TabCompleter {
         if (args == null  || args.isEmpty()) { utils.formattingErrorMessage(sender); return true }
         when (args[0].lowercase()) {
             "warrior" -> {
+                val itemNetheriteSword = ItemStack(Material.NETHERITE_SWORD)
+                itemNetheriteSword.addEnchantment(Enchantment.DAMAGE_ALL, 5)
+                itemNetheriteSword.addEnchantment(Enchantment.FIRE_ASPECT, 2)
                 sender.inventory.addItem(ItemStack(Material.DIAMOND_HELMET, 1))
                 sender.inventory.addItem(ItemStack(Material.DIAMOND_CHESTPLATE, 1))
                 sender.inventory.addItem(ItemStack(Material.DIAMOND_LEGGINGS, 1))
                 sender.inventory.addItem(ItemStack(Material.DIAMOND_BOOTS, 1))
+                sender.inventory.addItem(itemNetheriteSword)
             }
         }
 
