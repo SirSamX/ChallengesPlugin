@@ -2,7 +2,6 @@ package me.sirsam.challenges
 
 import me.sirsam.challenges.commands.Challenge
 import me.sirsam.challenges.commands.TimerCommand
-import me.sirsam.challenges.commands.TimerCompleter
 import me.sirsam.challenges.listeners.OnInventoryClick
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
@@ -33,7 +32,7 @@ class Main : JavaPlugin() {
     private fun registerCommands() {
         getCommand("challenge")?.setExecutor(Challenge())
         getCommand("timer")?.setExecutor(TimerCommand())
-        getCommand("timer")?.tabCompleter = TimerCompleter()
+        getCommand("timer")?.tabCompleter = TimerCommand()
     }
 
     private fun registerEvents() {

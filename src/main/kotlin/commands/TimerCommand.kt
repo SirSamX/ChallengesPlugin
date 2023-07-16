@@ -8,9 +8,10 @@ import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
+import org.bukkit.command.TabCompleter
 import org.bukkit.entity.Player
 
-class TimerCommand : CommandExecutor {
+class TimerCommand : CommandExecutor, TabCompleter {
     private val timer = ChallengeTimer.timer
     private val utils = Utilities()
 
@@ -79,5 +80,9 @@ class TimerCommand : CommandExecutor {
             else -> sender.openInventory(me.sirsam.challenges.guis.TimerGui().inventory)
         }
         return true
+    }
+
+    override fun onTabComplete(sender: CommandSender, command: Command, label: String, args: Array<out String>?): MutableList<String> {
+        return mutableListOf("start", "stop", "pause", "resume", "reset", "show", "hide", "set")
     }
 }
