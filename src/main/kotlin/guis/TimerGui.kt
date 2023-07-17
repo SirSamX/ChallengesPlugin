@@ -1,6 +1,7 @@
 package me.sirsam.challenges.guis
 
 import me.sirsam.challenges.ChallengeTimer
+import me.sirsam.challenges.Main
 import me.sirsam.challenges.helpers.ChallengeStatus
 import me.sirsam.challenges.helpers.Gui
 import net.kyori.adventure.text.Component
@@ -13,24 +14,26 @@ import org.bukkit.inventory.InventoryHolder
 class TimerGui: InventoryHolder {
     private val timer = ChallengeTimer.timer
     private val gui = Gui()
+    private val logger = Main.getPlugin().logger
 
     override fun getInventory(): Inventory {
+        logger.info("1")
         val inv = Bukkit.createInventory(this, 27, Component.text("Timer", NamedTextColor.DARK_PURPLE))
-
+        logger.info("2")
         val backgroundMaterial = when (timer.getStatus()) {
             ChallengeStatus.ACTIVE -> Material.GREEN_STAINED_GLASS_PANE
             ChallengeStatus.PAUSED -> Material.YELLOW_STAINED_GLASS_PANE
             ChallengeStatus.STOPPED -> Material.RED_STAINED_GLASS_PANE
         }
-
+        logger.info("3")
         for (i in 0..inv.size) {
             inv.setItem(i, gui.item(backgroundMaterial, Component.text("")))
         }
-
+        logger.info("4")
         inv.setItem(11, gui.item(Material.GREEN_CONCRETE, Component.text("Start", NamedTextColor.GREEN)))
         inv.setItem(13, gui.item(Material.YELLOW_CONCRETE, Component.text("Pause", NamedTextColor.YELLOW)))
         inv.setItem(15, gui.item(Material.RED_CONCRETE, Component.text("Reset" , NamedTextColor.RED)))
-
+        logger.info("5")
         return inv
     }
 }

@@ -1,6 +1,7 @@
 package me.sirsam.challenges.commands
 
 import me.sirsam.challenges.ChallengeTimer
+import me.sirsam.challenges.Main
 import me.sirsam.challenges.helpers.ChallengeStatus
 import me.sirsam.challenges.helpers.Utilities
 import net.kyori.adventure.text.Component
@@ -14,10 +15,11 @@ import org.bukkit.entity.Player
 class TimerCommand : CommandExecutor, TabCompleter {
     private val timer = ChallengeTimer.timer
     private val utils = Utilities()
+    private val logger = Main.getPlugin().logger
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>?): Boolean {
         if (sender !is Player) { utils.notPlayerMessage(sender); return true }
-        if (args == null  || args.isEmpty()) { sender.openInventory(me.sirsam.challenges.guis.TimerGui().inventory); return true }
+        if (args.isNullOrEmpty()) { logger.info("a1"); sender.openInventory(me.sirsam.challenges.guis.TimerGui().inventory); logger.info("a2"); return true }
 
         when (args[0].lowercase()) {
             "start", "resume" -> {
@@ -77,12 +79,15 @@ class TimerCommand : CommandExecutor, TabCompleter {
                 sender.sendMessage(utils.prefix.append(Component.text("Timer set to $time!", NamedTextColor.GRAY)))
             }
 
-            else -> sender.openInventory(me.sirsam.challenges.guis.TimerGui().inventory)
+            else -> { logger.info("b1"); sender.openInventory(me.sirsam.challenges.guis.TimerGui().inventory); logger.info("b2") }
         }
         return true
     }
 
     override fun onTabComplete(sender: CommandSender, command: Command, label: String, args: Array<out String>?): MutableList<String> {
-        return mutableListOf("start", "stop", "pause", "resume", "reset", "show", "hide", "set")
+        return if (args.isNullOrEmpty()) {
+            mutableListOf("start", "stop", "pause", "resume", "reset", "show", "hide", "set")
+        } else if (args[0] == "set") mutableListOf("<time>")
+        else mutableListOf()
     }
 }
