@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="b7e754c8-2be0-45d2-8853-ad830556777d" name="Changes" comment="Warrior Kit!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/commands/Kit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/commands/Kit.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/listeners/OnInventoryClick.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/listeners/OnInventoryClick.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
