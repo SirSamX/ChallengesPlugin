@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7e754c8-2be0-45d2-8853-ad830556777d" name="Changes" comment="Cancel inventory click in custom inventorys">
+    <list default="true" id="b7e754c8-2be0-45d2-8853-ad830556777d" name="Changes" comment="Changed formatting">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/commands/TimerCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/commands/TimerCommand.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/guis/TimerGui.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/guis/TimerGui.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/listeners/OnInventoryClick.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/listeners/OnInventoryClick.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,7 +143,63 @@
       <option name="project" value="LOCAL" />
       <updated>1689597058958</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Inventory fixes">
+      <option name="closed" value="true" />
+      <created>1689597972854</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1689597972854</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Time format">
+      <option name="closed" value="true" />
+      <created>1689690748743</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1689690748743</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added scoreboard usage">
+      <option name="closed" value="true" />
+      <created>1689691042874</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1689691042874</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Fixed">
+      <option name="closed" value="true" />
+      <created>1689691243291</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1689691243291</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Changed broadcasting to false">
+      <option name="closed" value="true" />
+      <created>1689692666367</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1689692666367</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Removed debug/fixed">
+      <option name="closed" value="true" />
+      <created>1689692691999</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1689692691999</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Changed formatting">
+      <option name="closed" value="true" />
+      <created>1689693981184</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1689693981184</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,6 +229,13 @@
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="Warrior Kit!" />
     <MESSAGE value="Cancel inventory click in custom inventorys" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cancel inventory click in custom inventorys" />
+    <MESSAGE value="Inventory fixes" />
+    <MESSAGE value="Time format" />
+    <MESSAGE value="Added scoreboard usage" />
+    <MESSAGE value="Fixed" />
+    <MESSAGE value="Changed broadcasting to false" />
+    <MESSAGE value="Removed debug/fixed" />
+    <MESSAGE value="Changed formatting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed formatting" />
   </component>
 </project>

@@ -1,7 +1,6 @@
 package me.sirsam.challenges.guis
 
 import me.sirsam.challenges.ChallengeTimer
-import me.sirsam.challenges.Main
 import me.sirsam.challenges.helpers.ChallengeStatus
 import me.sirsam.challenges.helpers.Gui
 import net.kyori.adventure.text.Component
@@ -14,7 +13,6 @@ import org.bukkit.inventory.InventoryHolder
 class TimerGui: InventoryHolder {
     private val timer = ChallengeTimer.timer
     private val gui = Gui()
-    private val logger = Main.getPlugin().logger
 
     override fun getInventory(): Inventory {
         val inv = Bukkit.createInventory(this, 27, Component.text("Timer", NamedTextColor.DARK_PURPLE))

@@ -1,7 +1,6 @@
 package me.sirsam.challenges.commands
 
 import me.sirsam.challenges.ChallengeTimer
-import me.sirsam.challenges.Main
 import me.sirsam.challenges.helpers.ChallengeStatus
 import me.sirsam.challenges.helpers.Utilities
 import net.kyori.adventure.text.Component
@@ -87,6 +86,6 @@ class TimerCommand : CommandExecutor, TabCompleter {
         return if (args.isNullOrEmpty()) {
             mutableListOf("start", "stop", "pause", "resume", "reset", "show", "hide", "set")
         } else if (args[0] == "set") mutableListOf("<time>")
-        else mutableListOf()
+        else mutableListOf("start", "stop", "pause", "resume", "reset", "show", "hide", "set")
     }
 }
