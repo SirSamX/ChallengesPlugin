@@ -80,11 +80,27 @@ class Timer {
     }
 
     fun Long.timerFormat(): String {
-        val days = TimeUnit.SECONDS.toDays(this)
-        val hours = TimeUnit.SECONDS.toHours(this) % 24
-        val minutes = TimeUnit.SECONDS.toMinutes(this) % 60
-        val seconds = this % 60
+        val sb = StringBuilder()
 
-        return String.format("%02dd:%02dh:%02dm:%02ds", days, hours, minutes, seconds)
+        with(TimeUnit.SECONDS) {
+            val days = toDays(this@timerFormat)
+            if (days > 0) {
+                sb.append("%d:".format(days))
+            }
+
+            val hours = toHours(this@timerFormat) % 24
+            if (hours > 0 || days > 0) {
+                sb.append("%02d:".format(hours))
+            }
+
+            val minutes = toMinutes(this@timerFormat) % 60
+            if (minutes > 0 || hours > 0 || days > 0) {
+                sb.append("%02d:".format(minutes))
+            }
+
+            sb.append("%02d".format(this@timerFormat % 60))
+        }
+
+        return sb.toString()
     }
 }
