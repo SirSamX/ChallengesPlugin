@@ -15,11 +15,10 @@ import org.bukkit.entity.Player
 class TimerCommand : CommandExecutor, TabCompleter {
     private val timer = ChallengeTimer.timer
     private val utils = Utilities()
-    private val logger = Main.getPlugin().logger
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>?): Boolean {
         if (sender !is Player) { utils.notPlayerMessage(sender); return true }
-        if (args.isNullOrEmpty()) { logger.info("a1"); sender.openInventory(me.sirsam.challenges.guis.TimerGui().inventory); logger.info("a2"); return true }
+        if (args.isNullOrEmpty()) { sender.openInventory(me.sirsam.challenges.guis.TimerGui().inventory); return true }
 
         when (args[0].lowercase()) {
             "start", "resume" -> {
@@ -79,7 +78,7 @@ class TimerCommand : CommandExecutor, TabCompleter {
                 sender.sendMessage(utils.prefix.append(Component.text("Timer set to $time!", NamedTextColor.GRAY)))
             }
 
-            else -> { logger.info("b1"); sender.openInventory(me.sirsam.challenges.guis.TimerGui().inventory); logger.info("b2") }
+            else -> { sender.openInventory(me.sirsam.challenges.guis.TimerGui().inventory) }
         }
         return true
     }
