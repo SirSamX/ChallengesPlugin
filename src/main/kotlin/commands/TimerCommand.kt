@@ -44,7 +44,7 @@ class TimerCommand : CommandExecutor, TabCompleter {
                     return true
                 }
                 timer.setStatus(ChallengeStatus.STOPPED)
-                timer.time = 0
+                timer.seconds = 0
             }
 
             "show" -> {
@@ -68,14 +68,14 @@ class TimerCommand : CommandExecutor, TabCompleter {
                     sender.sendMessage(utils.prefix.append(Component.text("Usage: /timer set <time>", NamedTextColor.GRAY)))
                     return true
                 }
-                var time: Int? = null
+                var time: Long? = null
                 try {
-                    time = args[1].toInt()
+                    time = args[1].toLong()
                 } catch (e: NumberFormatException) {
                     sender.sendMessage(utils.prefix.append(Component.text("Usage: /timer set <time>", NamedTextColor.GRAY)))
                 }
                 if (time == null) return true
-                timer.time = time
+                timer.seconds = time
                 sender.sendMessage(utils.prefix.append(Component.text("Timer set to $time!", NamedTextColor.GRAY)))
             }
 
