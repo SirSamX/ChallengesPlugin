@@ -4,6 +4,7 @@ import me.sirsam.challenges.commands.Challenge
 import me.sirsam.challenges.commands.Kit
 import me.sirsam.challenges.commands.TimerCommand
 import me.sirsam.challenges.listeners.OnInventoryClick
+import me.sirsam.challenges.listeners.OnJoin
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 
@@ -39,5 +40,6 @@ class Main : JavaPlugin() {
 
     private fun registerEvents() {
         Bukkit.getPluginManager().registerEvents(OnInventoryClick(), this)
+        Bukkit.getPluginManager().registerEvents(OnJoin(), this)
     }
 }

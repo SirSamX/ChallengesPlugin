@@ -6,13 +6,14 @@ import net.kyori.adventure.text.format.NamedTextColor
 import net.kyori.adventure.text.format.TextDecoration
 import org.bukkit.Bukkit
 import org.bukkit.scheduler.BukkitRunnable
+import java.util.concurrent.TimeUnit
 
 class Timer {
     private val plugin = Main.getPlugin()
     private val utils = Utilities()
     private var status = ChallengeStatus.STOPPED
     private var hidden = false
-    var time = 0
+    var seconds: Long = 0
 
     fun setStatus(status: ChallengeStatus, broadcast: Boolean = true) {
         this.status = status
@@ -47,8 +48,8 @@ class Timer {
             override fun run() {
                 when (status) {
                     ChallengeStatus.ACTIVE -> {
-                        Bukkit.getOnlinePlayers().forEach { p -> p.sendActionBar(Component.text("${time}s", NamedTextColor.DARK_PURPLE)) }
-                        time++
+                        Bukkit.getOnlinePlayers().forEach { p -> p.sendActionBar(Component.text(seconds.timerFormat(), NamedTextColor.DARK_PURPLE)) }
+                        seconds++
                     }
 
                     ChallengeStatus.PAUSED -> {
@@ -76,5 +77,14 @@ class Timer {
 
         if (!broadcast) return
         utils.broadcast(Component.text("Timer hidden", NamedTextColor.GRAY))
+    }
+
+    fun Long.timerFormat(): String {
+        val days = TimeUnit.SECONDS.toDays(this)
+        val hours = TimeUnit.SECONDS.toHours(this) % 24
+        val minutes = TimeUnit.SECONDS.toMinutes(this) % 60
+        val seconds = this % 60
+
+        return String.format("%02dd:%02dh:%02dm:%02ds", days, hours, minutes, seconds)
     }
 }
