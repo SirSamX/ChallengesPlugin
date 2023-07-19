@@ -13,6 +13,7 @@ object PvpDimension {
         world = Main.getPlugin().server.createWorld(worldCreator)!!
         world.keepSpawnInMemory = false
         world.pvp = true
+        world.setGameRule(GameRule.DO_MOB_SPAWNING, false)
         world.setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false)
         world.setGameRule(GameRule.DISABLE_RAIDS, true)
         world.setGameRule(GameRule.KEEP_INVENTORY, true)

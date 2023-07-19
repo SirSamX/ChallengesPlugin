@@ -24,7 +24,7 @@ class Kit : CommandExecutor, TabCompleter {
         when (args[0].lowercase()) {
             "warrior" -> {
                 sender.sendMessage(Component.text("Warrior kit is enabled!", NamedTextColor.GREEN))
-                val loc = Location(PvpDimension.world, 0.0, 100.0, 0.0)
+                val loc = Location(PvpDimension.world, 0.0, -60.0, 0.0)
                 sender.teleport(loc)
 
 
