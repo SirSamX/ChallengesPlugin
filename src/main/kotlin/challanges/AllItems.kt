@@ -26,7 +26,6 @@ class AllItems {
             val display = player.world.spawn(loc, ItemDisplay::class.java)
             display.itemStack = ItemStack(item.getValue(player))
         }
-
     }
 
     fun getItem(player: Player): Material? {
