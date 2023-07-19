@@ -1,5 +1,6 @@
 package me.sirsam.challenges.commands
 
+import me.sirsam.challenges.PvpDimension
 import me.sirsam.challenges.helpers.Utilities
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
@@ -23,7 +24,7 @@ class Kit : CommandExecutor, TabCompleter {
         when (args[0].lowercase()) {
             "warrior" -> {
                 sender.sendMessage(Component.text("Warrior kit is enabled!", NamedTextColor.GREEN))
-                val loc = Location(sender.world, 100.0, 50.0, 100.0)
+                val loc = Location(PvpDimension.world, 0.0, 100.0, 0.0)
                 sender.teleport(loc)
 
 
