@@ -33,9 +33,11 @@ class Main : JavaPlugin() {
 
     private fun registerCommands() {
         getCommand("challenge")?.setExecutor(Challenge())
+        getCommand("challenge")?.tabCompleter = Challenge()
         getCommand("timer")?.setExecutor(TimerCommand())
         getCommand("timer")?.tabCompleter = TimerCommand()
         getCommand("kit")?.setExecutor(Kit())
+        getCommand("kit")?.tabCompleter = Kit()
     }
 
     private fun registerEvents() {
