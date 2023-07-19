@@ -34,13 +34,11 @@ class AllItems {
         return item[player]
     }
 
-    fun getBossbar(): BossBar {
-        val item = Material.values().random()
-        val bossbar = BossBar.bossBar(Component.text(item.name), 100f, BossBar.Color.PURPLE, BossBar.Overlay.PROGRESS)
-        return bossbar
+    fun getBossbar(player: Player): BossBar {
+        return BossBar.bossBar(Component.text(getItem(player)!!.name), 100f, BossBar.Color.PURPLE, BossBar.Overlay.PROGRESS)
     }
 
     fun sendBossbar(player: Player) {
-        player.showBossBar(getBossbar())
+        player.showBossBar(getBossbar(player))
     }
 }

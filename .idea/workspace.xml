@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7e754c8-2be0-45d2-8853-ad830556777d" name="Changes" comment="Test">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="b7e754c8-2be0-45d2-8853-ad830556777d" name="Changes" comment="Boss bar">
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/challanges/AllItems.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/challanges/AllItems.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/commands/Kit.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/commands/Kit.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/listeners/OnJoin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/listeners/OnJoin.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +42,7 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -161,7 +159,21 @@
       <option name="project" value="LOCAL" />
       <updated>1689780257550</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Boss bar">
+      <created>1689786756491</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1689786756491</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Boss bar">
+      <created>1689787008375</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1689787008375</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -193,6 +205,7 @@
     <MESSAGE value="Experimental" />
     <MESSAGE value="Updated Commands and added AllItems (experimental)" />
     <MESSAGE value="Changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed" />
+    <MESSAGE value="Boss bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Boss bar" />
   </component>
 </project>
