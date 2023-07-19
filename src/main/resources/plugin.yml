@@ -25,6 +25,3 @@ commands:
     permission-message: You do not have permission to use this Command!
     usage: /<command>
     aliases: kits
-  timergui:
-    description: Opens a timer Gui.
-    permission: op

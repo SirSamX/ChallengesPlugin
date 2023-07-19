@@ -1,15 +1,10 @@
 package me.sirsam.challenges.commands
 
-import jdk.jshell.execution.Util
-import me.sirsam.challenges.ChallengeTimer
-import me.sirsam.challenges.helpers.ChallengeStatus
 import me.sirsam.challenges.helpers.Utilities
 import net.kyori.adventure.text.Component
-import net.kyori.adventure.text.ComponentLike
 import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.Location
 import org.bukkit.Material
-import org.bukkit.World
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -17,8 +12,6 @@ import org.bukkit.command.TabCompleter
 import org.bukkit.enchantments.Enchantment
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
-import org.bukkit.potion.PotionEffect
-import org.bukkit.potion.PotionEffectType
 
 class Kit : CommandExecutor, TabCompleter {
     val utils = Utilities()
@@ -39,9 +32,9 @@ class Kit : CommandExecutor, TabCompleter {
                 itemNetheriteSword.addEnchantment(Enchantment.DAMAGE_ALL, 5)
                 itemNetheriteSword.addEnchantment(Enchantment.FIRE_ASPECT, 2)
 
-                val itemDiamondHelemt = ItemStack(Material.DIAMOND_HELMET)
-                itemDiamondHelemt.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3)
-                itemDiamondHelemt.addEnchantment(Enchantment.THORNS, 2)
+                val itemDiamondHelmet = ItemStack(Material.DIAMOND_HELMET)
+                itemDiamondHelmet.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3)
+                itemDiamondHelmet.addEnchantment(Enchantment.THORNS, 2)
 
                 val itemDiamondChestplate = ItemStack(Material.DIAMOND_CHESTPLATE)
                 itemDiamondChestplate.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3)
@@ -56,7 +49,7 @@ class Kit : CommandExecutor, TabCompleter {
                 itemDiamondBoots.addEnchantment(Enchantment.THORNS, 2)
 
                 sender.inventory.setItemInMainHand(itemNetheriteSword)
-                sender.inventory.helmet = itemDiamondHelemt
+                sender.inventory.helmet = itemDiamondHelmet
                 sender.inventory.chestplate = itemDiamondChestplate
                 sender.inventory.leggings = itemDiamondLeggins
                 sender.inventory.boots = itemDiamondBoots
@@ -72,7 +65,7 @@ class Kit : CommandExecutor, TabCompleter {
         return true
     }
 
-    override fun onTabComplete(sender: CommandSender, command: Command, label: String, args: Array<out String>?): MutableList<String>? {
+    override fun onTabComplete(sender: CommandSender, command: Command, label: String, args: Array<out String>?): MutableList<String> {
         return mutableListOf("warrior", "stop")
 
     }
