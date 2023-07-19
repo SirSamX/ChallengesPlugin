@@ -14,7 +14,6 @@ class OnJoin : Listener {
     @EventHandler
     fun onJoin(event: PlayerJoinEvent) {
         val player = event.player
-        player.sendMessage("oops")
 
         object : BukkitRunnable() {
             override fun run() {

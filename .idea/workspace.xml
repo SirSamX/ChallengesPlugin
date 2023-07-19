@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7e754c8-2be0-45d2-8853-ad830556777d" name="Changes" comment="Boss bar">
+    <list default="true" id="b7e754c8-2be0-45d2-8853-ad830556777d" name="Changes" comment="Fixed Bossbar">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/challanges/AllItems.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/challanges/AllItems.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/listeners/OnJoin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/listeners/OnJoin.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +44,6 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -159,21 +160,71 @@
       <option name="project" value="LOCAL" />
       <updated>1689780257550</updated>
     </task>
-    <task id="LOCAL-00006" summary="Boss bar">
-      <created>1689786756491</created>
+    <task id="LOCAL-00006" summary="Changed">
+      <option name="closed" value="true" />
+      <created>1689781050669</created>
       <option name="number" value="00006" />
       <option name="presentableId" value="LOCAL-00006" />
       <option name="project" value="LOCAL" />
-      <updated>1689786756491</updated>
+      <updated>1689781050669</updated>
     </task>
-    <task id="LOCAL-00007" summary="Boss bar">
-      <created>1689787008375</created>
+    <task id="LOCAL-00007" summary="Added PVP dimension">
+      <option name="closed" value="true" />
+      <created>1689784470392</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1689787008375</updated>
+      <updated>1689784470392</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Changed dimension name">
+      <option name="closed" value="true" />
+      <created>1689784687063</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1689784687063</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fixed">
+      <option name="closed" value="true" />
+      <created>1689784762780</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1689784762780</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Fixed">
+      <option name="closed" value="true" />
+      <created>1689785459632</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1689785459633</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Fixed">
+      <option name="closed" value="true" />
+      <created>1689786850678</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1689786850678</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Fixed">
+      <option name="closed" value="true" />
+      <created>1689786910124</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1689786910124</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Fixed Bossbar">
+      <option name="closed" value="true" />
+      <created>1689790630994</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1689790630994</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -205,7 +256,10 @@
     <MESSAGE value="Experimental" />
     <MESSAGE value="Updated Commands and added AllItems (experimental)" />
     <MESSAGE value="Changed" />
-    <MESSAGE value="Boss bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Boss bar" />
+    <MESSAGE value="Added PVP dimension" />
+    <MESSAGE value="Changed dimension name" />
+    <MESSAGE value="Fixed" />
+    <MESSAGE value="Fixed Bossbar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed Bossbar" />
   </component>
 </project>
