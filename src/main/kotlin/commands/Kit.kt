@@ -4,6 +4,7 @@ import me.sirsam.challenges.PvpDimension
 import me.sirsam.challenges.helpers.Utilities
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
+import org.bukkit.Bukkit
 import org.bukkit.Location
 import org.bukkit.Material
 import org.bukkit.command.Command
@@ -24,8 +25,8 @@ class Kit : CommandExecutor, TabCompleter {
         when (args[0].lowercase()) {
             "warrior" -> {
                 sender.sendMessage(Component.text("Warrior kit is enabled!", NamedTextColor.GREEN))
-                val loc = Location(PvpDimension.world, 0.0, 100.0, 0.0)
-                sender.teleport(loc)
+                val locpvp = Location(PvpDimension.world, 0.0, 100.0, 0.0)
+                sender.teleport(locpvp)
 
 
                 sender.inventory.clear()
@@ -57,9 +58,11 @@ class Kit : CommandExecutor, TabCompleter {
                 sender.inventory.addItem(ItemStack(Material.GOLDEN_CARROT, 20))
             }
 
-            "stop" -> {
+            "clear" -> {
                 sender.inventory.clear()
+                val locworld = Location(Bukkit.getWorld("overworld"), 0.0, 0.0, 0.0)
                 sender.sendMessage(Component.text("Kit disabled!", NamedTextColor.RED))
+                sender.teleport(locworld)
             }
         }
 

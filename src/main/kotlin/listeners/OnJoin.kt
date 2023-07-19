@@ -1,5 +1,7 @@
 package me.sirsam.challenges.listeners
 
+import me.sirsam.challenges.challanges.AllItems
+import me.sirsam.challenges.commands.Challenge
 import me.sirsam.challenges.helpers.Scoreboard
 import org.bukkit.boss.BossBar
 import org.bukkit.event.EventHandler
@@ -12,5 +14,6 @@ class OnJoin : Listener {
         val player = event.player
 
         Scoreboard().sendScoreboard(player)
+        AllItems().sendBossbar(player)
     }
 }
