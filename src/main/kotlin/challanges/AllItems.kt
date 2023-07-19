@@ -35,7 +35,7 @@ class AllItems {
     }
 
     fun getBossbar(player: Player): BossBar {
-        return BossBar.bossBar(Component.text(getItem(player)!!.name), 100f, BossBar.Color.PURPLE, BossBar.Overlay.PROGRESS)
+        return BossBar.bossBar(Component.text("Current Item: "), 1f, BossBar.Color.YELLOW, BossBar.Overlay.PROGRESS)
     }
 
     fun sendBossbar(player: Player) {
