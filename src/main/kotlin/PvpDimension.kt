@@ -10,6 +10,7 @@ object PvpDimension {
     init {
         val worldCreator = WorldCreator("pvp_dimension")
         worldCreator.type(WorldType.FLAT)
+        worldCreator.generateStructures(false)
         world = Main.getPlugin().server.createWorld(worldCreator)!!
         world.keepSpawnInMemory = false
         world.pvp = true
