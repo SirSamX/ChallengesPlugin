@@ -14,7 +14,7 @@ import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
 class Kit : CommandExecutor, TabCompleter {
-    val utils = Utilities()
+    private val utils = Utilities()
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>?): Boolean {
 
