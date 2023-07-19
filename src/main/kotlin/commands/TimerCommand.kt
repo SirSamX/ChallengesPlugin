@@ -76,6 +76,8 @@ class TimerCommand : CommandExecutor, TabCompleter {
                 timer.seconds = time
                 sender.sendMessage(utils.prefix.append(Component.text("Timer set to $time!", NamedTextColor.GRAY)))
             }
+
+            else -> { sender.openInventory(me.sirsam.challenges.guis.TimerGui().inventory) }
         }
         return true
     }
