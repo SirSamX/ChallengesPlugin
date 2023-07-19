@@ -2,6 +2,7 @@ package me.sirsam.challenges
 
 import me.sirsam.challenges.commands.Challenge
 import me.sirsam.challenges.commands.Kit
+import me.sirsam.challenges.commands.Timer
 import me.sirsam.challenges.commands.TimerCommand
 import me.sirsam.challenges.listeners.OnInventoryClick
 import me.sirsam.challenges.listeners.OnJoin
@@ -36,6 +37,7 @@ class Main : JavaPlugin() {
         getCommand("timer")?.setExecutor(TimerCommand())
         getCommand("timer")?.tabCompleter = TimerCommand()
         getCommand("kit")?.setExecutor(Kit())
+        getCommand("timergui")?.setExecutor(Timer())
     }
 
     private fun registerEvents() {

@@ -1,6 +1,8 @@
 package me.sirsam.challenges.commands
 
 import jdk.jshell.execution.Util
+import me.sirsam.challenges.ChallengeTimer
+import me.sirsam.challenges.helpers.ChallengeStatus
 import me.sirsam.challenges.helpers.Utilities
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.ComponentLike
@@ -27,6 +29,11 @@ class Kit : CommandExecutor, TabCompleter {
         if (args == null  || args.isEmpty()) { utils.formattingErrorMessage(sender); return true }
         when (args[0].lowercase()) {
             "warrior" -> {
+                sender.sendMessage(Component.text("Warrior kit is enabled!", NamedTextColor.GREEN))
+                val loc = Location(sender.world, 100.0, 50.0, 100.0)
+                sender.teleport(loc)
+
+
                 sender.inventory.clear()
                 val itemNetheriteSword = ItemStack(Material.NETHERITE_SWORD)
                 itemNetheriteSword.addEnchantment(Enchantment.DAMAGE_ALL, 5)
@@ -48,14 +55,17 @@ class Kit : CommandExecutor, TabCompleter {
                 itemDiamondBoots.addEnchantment(Enchantment.PROTECTION_ENVIRONMENTAL, 3)
                 itemDiamondBoots.addEnchantment(Enchantment.THORNS, 2)
 
-                sender.inventory.addItem(itemNetheriteSword)
-                sender.inventory.addItem(itemDiamondHelemt)
-                sender.inventory.addItem(itemDiamondChestplate)
-                sender.inventory.addItem(itemDiamondLeggins)
-                sender.inventory.addItem(itemDiamondBoots)
-                sender.sendMessage(Component.text("Warrior kit is enabled!", NamedTextColor.GREEN))
-                val loc = Location(sender.world, 100.0, 100.0, 100.0)
-                sender.teleport(loc)
+                sender.inventory.setItemInMainHand(itemNetheriteSword)
+                sender.inventory.helmet = itemDiamondHelemt
+                sender.inventory.chestplate = itemDiamondChestplate
+                sender.inventory.leggings = itemDiamondLeggins
+                sender.inventory.boots = itemDiamondBoots
+                sender.inventory.addItem(ItemStack(Material.GOLDEN_CARROT, 20))
+            }
+
+            "stop" -> {
+                sender.inventory.clear()
+                sender.sendMessage(Component.text("Kit disabled!", NamedTextColor.RED))
             }
         }
 
@@ -63,7 +73,7 @@ class Kit : CommandExecutor, TabCompleter {
     }
 
     override fun onTabComplete(sender: CommandSender, command: Command, label: String, args: Array<out String>?): MutableList<String>? {
-        return mutableListOf("warrior")
+        return mutableListOf("warrior", "stop")
 
     }
 }
