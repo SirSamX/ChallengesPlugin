@@ -10,26 +10,26 @@ import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 
 class AllItems {
-    private var items: MutableMap<Player, Material> = mutableMapOf()
+    private var item: MutableMap<Player, Material> = mutableMapOf()
 
     fun newItem(player: Player) {
-        items[player] = Material.values().random()
-
-        if (ChallengeTimer.timer.getStatus() != ChallengeStatus.ACTIVE || items[player] == null) return
+        item[player] = Material.values().random()
+        item[player]
+        if (ChallengeTimer.timer.getStatus() != ChallengeStatus.ACTIVE || item[player] == null) return
         val loc = player.location
         loc.y += 2.5
 
-        if (items[player]!!.isBlock) {
+        if (item[player]!!.isBlock) {
             val display = player.world.spawn(loc, BlockDisplay::class.java)
-            display.block = Bukkit.createBlockData(items[player]!!)
+            display.block = Bukkit.createBlockData(item[player]!!)
         } else {
             val display = player.world.spawn(loc, ItemDisplay::class.java)
-            display.itemStack = ItemStack(items.getValue(player))
+            display.itemStack = ItemStack(item.getValue(player))
         }
 
     }
 
     fun getItem(player: Player): Material? {
-        return items[player]
+        return item[player]
     }
 }
