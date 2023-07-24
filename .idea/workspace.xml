@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7e754c8-2be0-45d2-8853-ad830556777d" name="Changes" comment="Fixed Bossbar">
+    <list default="true" id="b7e754c8-2be0-45d2-8853-ad830556777d" name="Changes" comment="Fixed AllItems item display">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/challanges/AllItems.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/challanges/AllItems.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/listeners/OnJoin.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/listeners/OnJoin.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ChallengeTimer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ChallengeTimer.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/Main.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/commands/TimerCommand.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/commands/TimerCommand.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/guis/TimerGui.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/guis/TimerGui.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/helpers/Timer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/helpers/Timer.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +227,15 @@
       <option name="project" value="LOCAL" />
       <updated>1689790630994</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Fixed AllItems item display">
+      <option name="closed" value="true" />
+      <created>1689795329668</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1689795329668</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -260,6 +271,7 @@
     <MESSAGE value="Changed dimension name" />
     <MESSAGE value="Fixed" />
     <MESSAGE value="Fixed Bossbar" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed Bossbar" />
+    <MESSAGE value="Fixed AllItems item display" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed AllItems item display" />
   </component>
 </project>

@@ -13,10 +13,39 @@ class Timer {
     private val utils = Utilities()
     private var status = ChallengeStatus.STOPPED
     private var hidden = false
-    var seconds: Long = 0
+    private var seconds: Long = 0
+
+    init {
+        object : BukkitRunnable() {
+            override fun run() {
+                update()
+                seconds++
+            }
+        }.runTaskTimer(plugin, 0, 20)
+    }
+
+    fun update() {
+        when (status) {
+            ChallengeStatus.ACTIVE -> {
+                if (hidden) return
+                Bukkit.getOnlinePlayers().forEach { p -> p.sendActionBar(Component.text(seconds.timerFormat(), NamedTextColor.DARK_PURPLE)) }
+            }
+
+            ChallengeStatus.PAUSED -> {
+                if (hidden) return
+                Bukkit.getOnlinePlayers().forEach { p -> p.sendActionBar(Component.text("Timer Paused", NamedTextColor.DARK_PURPLE).decorate(TextDecoration.ITALIC)) }
+            }
+
+            ChallengeStatus.STOPPED -> {
+                if (hidden) return
+                Bukkit.getOnlinePlayers().forEach { p -> p.sendActionBar(Component.text("Timer Stopped", NamedTextColor.DARK_PURPLE).decorate(TextDecoration.ITALIC)) }
+            }
+        }
+    }
 
     fun setStatus(status: ChallengeStatus, broadcast: Boolean = true) {
         this.status = status
+        update()
 
         if (!broadcast) return
         when (status) {
@@ -44,29 +73,7 @@ class Timer {
 
     fun show(broadcast: Boolean = true) {
         hidden = false
-        object : BukkitRunnable() {
-            override fun run() {
-                when (status) {
-                    ChallengeStatus.ACTIVE -> {
-                        Bukkit.getOnlinePlayers().forEach { p -> p.sendActionBar(Component.text(seconds.timerFormat(), NamedTextColor.DARK_PURPLE)) }
-                        seconds++
-                    }
-
-                    ChallengeStatus.PAUSED -> {
-                        Bukkit.getOnlinePlayers().forEach { p -> p.sendActionBar(Component.text("Timer Paused", NamedTextColor.DARK_PURPLE).decorate(TextDecoration.ITALIC)) }
-                    }
-
-                    ChallengeStatus.STOPPED -> {
-                        Bukkit.getOnlinePlayers().forEach { p -> p.sendActionBar(Component.text("Timer Stopped", NamedTextColor.DARK_PURPLE).decorate(TextDecoration.ITALIC)) }
-                    }
-                }
-
-                if (hidden) {
-                    cancel()
-                    Bukkit.getOnlinePlayers().forEach { p -> p.clearTitle() }
-                }
-            }
-        }.runTaskTimer(plugin, 0, 20)
+        update()
 
         if (!broadcast) return
         utils.broadcast(Component.text("Timer shown", NamedTextColor.GRAY))
@@ -74,12 +81,46 @@ class Timer {
 
     fun hide(broadcast: Boolean = true) {
         hidden = true
+        Bukkit.getOnlinePlayers().forEach { p -> p.sendActionBar(Component.text("")) }
 
         if (!broadcast) return
         utils.broadcast(Component.text("Timer hidden", NamedTextColor.GRAY))
     }
 
-    fun Long.timerFormat(): String {
+    fun get(): Long {
+        return seconds
+    }
+
+    fun set(seconds: Long, broadcast: Boolean = true) {
+        this.seconds = seconds
+
+        if (broadcast) return
+        utils.broadcast(utils.prefix.append(Component.text("Timer set to $seconds seconds!", NamedTextColor.GRAY)))
+    }
+
+    fun add(seconds: Long, broadcast: Boolean = true) {
+        this.seconds += seconds
+
+        if (broadcast) return
+        utils.broadcast(utils.prefix.append(Component.text("Added $seconds seconds!", NamedTextColor.GRAY)))
+
+    }
+
+    fun remove(seconds: Long, broadcast: Boolean = true) {
+        this.seconds -= seconds
+
+        if (broadcast) return
+        utils.broadcast(utils.prefix.append(Component.text("Removed $seconds seconds!", NamedTextColor.GRAY)))
+
+    }
+
+
+    fun reset(broadcast: Boolean = true) {
+        setStatus(ChallengeStatus.STOPPED, broadcast)
+        set(0)
+    }
+
+    private fun Long.timerFormat(): String {
         val sb = StringBuilder()
 
         with(TimeUnit.SECONDS) {

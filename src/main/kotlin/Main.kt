@@ -28,7 +28,9 @@ class Main : JavaPlugin() {
     }
 
     override fun onDisable() {
-
+        config.set("timer.status", ChallengeTimer.timer.getStatus())
+        config.set("timer.seconds", ChallengeTimer.timer.get())
+        saveConfig()
     }
 
     private fun registerCommands() {

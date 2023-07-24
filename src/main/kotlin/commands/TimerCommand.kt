@@ -41,8 +41,7 @@ class TimerCommand : CommandExecutor, TabCompleter {
                     sender.sendMessage(utils.prefix.append(Component.text("Timer is already reset!", NamedTextColor.GRAY)))
                     return true
                 }
-                timer.setStatus(ChallengeStatus.STOPPED)
-                timer.seconds = 0
+                timer.reset()
             }
 
             "show" -> {
@@ -73,8 +72,37 @@ class TimerCommand : CommandExecutor, TabCompleter {
                     sender.sendMessage(utils.prefix.append(Component.text("Usage: /timer set <time>", NamedTextColor.GRAY)))
                 }
                 if (time == null) return true
-                timer.seconds = time
-                sender.sendMessage(utils.prefix.append(Component.text("Timer set to $time!", NamedTextColor.GRAY)))
+                timer.set(time)
+            }
+
+            "add" -> {
+                if (args.size != 2) {
+                    sender.sendMessage(utils.prefix.append(Component.text("Usage: /timer add <time>", NamedTextColor.GRAY)))
+                    return true
+                }
+                var time: Long? = null
+                try {
+                    time = args[1].toLong()
+                } catch (e: NumberFormatException) {
+                    sender.sendMessage(utils.prefix.append(Component.text("<time> must be numeric!", NamedTextColor.GRAY)))
+                }
+                if (time == null) return true
+                timer.add(time)
+            }
+
+            "remove" -> {
+                if (args.size != 2) {
+                    sender.sendMessage(utils.prefix.append(Component.text("Usage: /timer remove <time>", NamedTextColor.GRAY)))
+                    return true
+                }
+                var time: Long? = null
+                try {
+                    time = args[1].toLong()
+                } catch (e: NumberFormatException) {
+                    sender.sendMessage(utils.prefix.append(Component.text("<time> must be numeric!", NamedTextColor.GRAY)))
+                }
+                if (time == null) return true
+                timer.remove(time)
             }
 
             else -> { sender.openInventory(me.sirsam.challenges.guis.TimerGui().inventory) }
@@ -84,8 +112,8 @@ class TimerCommand : CommandExecutor, TabCompleter {
 
     override fun onTabComplete(sender: CommandSender, command: Command, label: String, args: Array<out String>?): MutableList<String> {
         return if (args.isNullOrEmpty()) {
-            mutableListOf("start", "stop", "pause", "resume", "reset", "show", "hide", "set")
-        } else if (args[0] == "set") mutableListOf("<time>")
-        else mutableListOf("start", "stop", "pause", "resume", "reset", "show", "hide", "set")
+            mutableListOf("start", "stop", "pause", "resume", "reset", "show", "hide", "set", "add", "remove")
+        } else if (args[0] == "set" || args[0] == "add" || args[0] == "remove") mutableListOf("<time>")
+        else mutableListOf("start", "stop", "pause", "resume", "reset", "show", "hide", "set", "add", "remove")
     }
 }

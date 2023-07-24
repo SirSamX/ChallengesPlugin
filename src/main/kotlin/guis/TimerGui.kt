@@ -30,6 +30,8 @@ class TimerGui: InventoryHolder {
         inv.setItem(11, gui.item(Material.GREEN_CONCRETE, Component.text("Start", NamedTextColor.GREEN)))
         inv.setItem(13, gui.item(Material.YELLOW_CONCRETE, Component.text("Pause", NamedTextColor.YELLOW)))
         inv.setItem(15, gui.item(Material.RED_CONCRETE, Component.text("Reset" , NamedTextColor.RED)))
+        inv.setItem(18, gui.item(Material.CHERRY_SIGN, Component.text("Set Time" , NamedTextColor.AQUA)))
+        inv.setItem(26, gui.item(Material.ENDER_EYE, Component.text(if (timer.isHidden()) "Show" else "Hide", if (timer.isHidden()) NamedTextColor.GREEN else NamedTextColor.RED)))
 
         return inv
     }
