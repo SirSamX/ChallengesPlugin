@@ -1,27 +1,25 @@
 package me.sirsam.challenges.challanges
 
 import me.sirsam.challenges.ChallengeTimer
-import me.sirsam.challenges.Main
 import me.sirsam.challenges.helpers.ChallengeStatus
 import net.kyori.adventure.bossbar.BossBar
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
-import org.bukkit.Bukkit
 import org.bukkit.Material
-import org.bukkit.entity.*
+import org.bukkit.entity.ArmorStand
+import org.bukkit.entity.EntityType
+import org.bukkit.entity.Player
 import org.bukkit.inventory.EquipmentSlot
 import org.bukkit.inventory.ItemStack
-import org.bukkit.scheduler.BukkitRunnable
 
 class AllItems {
     private var item: MutableMap<Player, Material> = mutableMapOf()
 
     fun newItem(player: Player) {
         item[player] = Material.values().random()
+
         if (ChallengeTimer.timer.getStatus() != ChallengeStatus.ACTIVE || item[player] == null) return
         val loc = player.location
-        loc.y += 2.5
-
         val armorStand = loc.world.spawnEntity(loc, EntityType.ARMOR_STAND) as ArmorStand
         armorStand.isInvisible = true
         armorStand.isSmall = true
