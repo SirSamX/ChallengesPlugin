@@ -1,12 +1,9 @@
 package me.sirsam.challenges
 
-import me.sirsam.challenges.challanges.AllItems
 import me.sirsam.challenges.challanges.ChallengeManager
-import me.sirsam.challenges.challanges.TestChallenge
 import me.sirsam.challenges.commands.ChallengeCommand
 import me.sirsam.challenges.commands.Kit
 import me.sirsam.challenges.commands.TimerCommand
-import me.sirsam.challenges.helpers.Challenge
 import me.sirsam.challenges.helpers.Utilities
 import me.sirsam.challenges.listeners.OnInventoryClick
 import me.sirsam.challenges.listeners.OnJoin
@@ -28,8 +25,8 @@ class Main : JavaPlugin() {
         instance = this
         registerCommands()
         registerEvents()
-        //utils.setEnabled(ChallengeManager.ALL_ITEMS, true)
-        //enableChallenges()
+        utils.setEnabled(ChallengeManager.ALL_ITEMS, true, this)
+        enableChallenges()
 
         logger.info("Plugin enabled!")
     }
@@ -37,7 +34,7 @@ class Main : JavaPlugin() {
     override fun onDisable() {
         config.set("timer.status", ChallengeTimer.timer.getStatus())
         config.set("timer.seconds", ChallengeTimer.timer.get())
-        //disableChallenges()
+        disableChallenges()
         saveConfig()
 
         logger.info("Plugin disabled!")
@@ -46,14 +43,14 @@ class Main : JavaPlugin() {
     private fun enableChallenges() {
         ChallengeManager.values().forEach {
                 challenge ->
-            if (utils.isEnabled(challenge)) challenge.clazz.onPluginEnable()
+            if (utils.isEnabled(challenge, this)) challenge.clazz.onPluginEnable()
         }
     }
 
     private fun disableChallenges() {
         ChallengeManager.values().forEach {
             challenge ->
-            if (utils.isEnabled(challenge)) challenge.clazz.onPluginDisable()
+            if (utils.isEnabled(challenge, this)) challenge.clazz.onPluginDisable()
         }
     }
 

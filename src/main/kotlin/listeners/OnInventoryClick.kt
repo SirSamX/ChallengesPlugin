@@ -1,7 +1,6 @@
 package me.sirsam.challenges.listeners
 
 import me.sirsam.challenges.ChallengeTimer
-import me.sirsam.challenges.guis.Challenges
 import me.sirsam.challenges.guis.TimerGui
 import me.sirsam.challenges.helpers.ChallengeStatus
 import net.kyori.adventure.text.Component
@@ -39,8 +38,9 @@ class OnInventoryClick : Listener {
                 player.closeInventory()
             }
 
-            4 -> {
-                player.openInventory(Challenges().inventory)
+            26 -> {
+                if (timer.isHidden()) timer.show() else timer.hide()
+                player.openInventory(TimerGui().inventory)
             }
         }
 
