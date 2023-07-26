@@ -37,6 +37,11 @@ class OnInventoryClick : Listener {
                 )
                 player.closeInventory()
             }
+
+            26 -> {
+                if (timer.isHidden()) timer.show() else timer.hide()
+                player.openInventory(TimerGui().inventory)
+            }
         }
 
         event.isCancelled = true
