@@ -1,6 +1,7 @@
 package me.sirsam.challenges.challanges
 
 import me.sirsam.challenges.ChallengeTimer
+import me.sirsam.challenges.helpers.Challenge
 import me.sirsam.challenges.helpers.ChallengeStatus
 import net.kyori.adventure.bossbar.BossBar
 import net.kyori.adventure.text.Component
@@ -22,7 +23,7 @@ import org.bukkit.scheduler.BukkitRunnable
 import org.eclipse.sisu.launch.Main
 import javax.swing.event.ChangeEvent
 
-class AllItems {
+class AllItems : Challenge() {
     private var item: MutableMap<Player, Material> = mutableMapOf()
 
     fun newItem(player: Player) {
