@@ -1,10 +1,14 @@
 package me.sirsam.challenges.challanges
 
+import io.papermc.paper.text.PaperComponents
 import me.sirsam.challenges.ChallengeTimer
+import me.sirsam.challenges.helpers.Challenge
 import me.sirsam.challenges.helpers.ChallengeStatus
+import me.sirsam.challenges.helpers.Utilities
 import net.kyori.adventure.bossbar.BossBar
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
+import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.entity.ArmorStand
 import org.bukkit.entity.EntityType
@@ -12,7 +16,7 @@ import org.bukkit.entity.Player
 import org.bukkit.inventory.EquipmentSlot
 import org.bukkit.inventory.ItemStack
 
-class AllItems {
+class AllItems : Challenge() {
     private var item: MutableMap<Player, Material> = mutableMapOf()
 
     fun newItem(player: Player) {
@@ -65,5 +69,9 @@ class AllItems {
 
     fun sendBossbar(player: Player) {
         player.showBossBar(getBossbar(player))
+    }
+
+    override fun onChallengeEnable() {
+        Utilities().broadcast(Component.text("Challenge enabled"))
     }
 }

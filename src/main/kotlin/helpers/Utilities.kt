@@ -1,5 +1,7 @@
 package me.sirsam.challenges.helpers
 
+import me.sirsam.challenges.Main
+import me.sirsam.challenges.challanges.ChallengeManager
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.Bukkit
@@ -7,6 +9,8 @@ import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
 
 class Utilities {
+    private val plugin = Main.getPlugin()
+
     val prefix = Component.text("Challenges", NamedTextColor.DARK_PURPLE).append(Component.text(" >> ", NamedTextColor.LIGHT_PURPLE))
 
     fun broadcast(message: Component) { Bukkit.getOnlinePlayers().forEach { p -> p.sendMessage(prefix.append(message)) } }
@@ -24,4 +28,8 @@ class Utilities {
     fun cooldownMessage(p: Player, eta: Long) { p.sendMessage(Component.text("Please wait ${"%.1f".format(eta.toFloat())}s before using this!", NamedTextColor.YELLOW)) }
 
     fun isNumeric(input: String): Boolean { return input.toDoubleOrNull() != null }
+
+    fun isEnabled(challenge: ChallengeManager): Boolean { return plugin.config.getBoolean("challenges.${challenge.namespace}.enabled") }
+
+    fun setEnabled(challenge: ChallengeManager, enabled: Boolean) { plugin.config.set("challenges.${challenge.namespace}.enabled", enabled) }
 }

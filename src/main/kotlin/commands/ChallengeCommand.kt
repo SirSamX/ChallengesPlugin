@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender
 import org.bukkit.command.TabCompleter
 import org.bukkit.entity.Player
 
-class Challenge : CommandExecutor, TabCompleter {
+class ChallengeCommand : CommandExecutor, TabCompleter {
     private val utils = Utilities()
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>?): Boolean {
