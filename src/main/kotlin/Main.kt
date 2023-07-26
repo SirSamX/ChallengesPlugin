@@ -1,15 +1,20 @@
 package me.sirsam.challenges
 
-import me.sirsam.challenges.commands.Challenge
+import me.sirsam.challenges.challanges.AllItems
+import me.sirsam.challenges.challanges.ChallengeManager
+import me.sirsam.challenges.challanges.TestChallenge
+import me.sirsam.challenges.commands.ChallengeCommand
 import me.sirsam.challenges.commands.Kit
 import me.sirsam.challenges.commands.TimerCommand
+import me.sirsam.challenges.helpers.Challenge
+import me.sirsam.challenges.helpers.Utilities
 import me.sirsam.challenges.listeners.OnInventoryClick
 import me.sirsam.challenges.listeners.OnJoin
 import org.bukkit.Bukkit
 import org.bukkit.plugin.java.JavaPlugin
 
-@Suppress("unused")
 class Main : JavaPlugin() {
+    private val utils = Utilities()
 
     companion object {
         lateinit var instance: Main
@@ -18,11 +23,13 @@ class Main : JavaPlugin() {
             return instance
         }
     }
+
     override fun onEnable() {
         instance = this
-
         registerCommands()
         registerEvents()
+        //utils.setEnabled(ChallengeManager.ALL_ITEMS, true)
+        //enableChallenges()
 
         logger.info("Plugin enabled!")
     }
@@ -30,12 +37,29 @@ class Main : JavaPlugin() {
     override fun onDisable() {
         config.set("timer.status", ChallengeTimer.timer.getStatus())
         config.set("timer.seconds", ChallengeTimer.timer.get())
+        //disableChallenges()
         saveConfig()
+
+        logger.info("Plugin disabled!")
+    }
+
+    private fun enableChallenges() {
+        ChallengeManager.values().forEach {
+                challenge ->
+            if (utils.isEnabled(challenge)) challenge.clazz.onPluginEnable()
+        }
+    }
+
+    private fun disableChallenges() {
+        ChallengeManager.values().forEach {
+            challenge ->
+            if (utils.isEnabled(challenge)) challenge.clazz.onPluginDisable()
+        }
     }
 
     private fun registerCommands() {
-        getCommand("challenge")?.setExecutor(Challenge())
-        getCommand("challenge")?.tabCompleter = Challenge()
+        getCommand("challenge")?.setExecutor(ChallengeCommand())
+        getCommand("challenge")?.tabCompleter = ChallengeCommand()
         getCommand("timer")?.setExecutor(TimerCommand())
         getCommand("timer")?.tabCompleter = TimerCommand()
         getCommand("kit")?.setExecutor(Kit())
