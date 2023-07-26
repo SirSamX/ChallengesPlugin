@@ -5,12 +5,22 @@ import me.sirsam.challenges.helpers.ChallengeStatus
 import net.kyori.adventure.bossbar.BossBar
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
+import org.bukkit.Bukkit
 import org.bukkit.Material
 import org.bukkit.entity.ArmorStand
+import org.bukkit.entity.BlockDisplay
 import org.bukkit.entity.EntityType
+import org.bukkit.entity.ItemDisplay
 import org.bukkit.entity.Player
+import org.bukkit.event.EventHandler
+import org.bukkit.event.inventory.InventoryClickEvent
+import org.bukkit.event.inventory.InventoryPickupItemEvent
 import org.bukkit.inventory.EquipmentSlot
 import org.bukkit.inventory.ItemStack
+import org.bukkit.inventory.MainHand
+import org.bukkit.scheduler.BukkitRunnable
+import org.eclipse.sisu.launch.Main
+import javax.swing.event.ChangeEvent
 
 class AllItems {
     private var item: MutableMap<Player, Material> = mutableMapOf()
@@ -23,6 +33,7 @@ class AllItems {
         val armorStand = loc.world.spawnEntity(loc, EntityType.ARMOR_STAND) as ArmorStand
         armorStand.isInvisible = true
         armorStand.isSmall = true
+        armorStand.isInvulnerable = true
         armorStand.setItem(EquipmentSlot.HEAD, ItemStack(item[player]!!))
         player.addPassenger(armorStand)
 
@@ -36,7 +47,7 @@ class AllItems {
                     loc.y += 2.5
                     display.teleport(location)
                 }
-            }.runTaskTimer(Main.getPlugin(), 0, 1L)
+            }.runTaskTimer(me.sirsam.challenges.Main.getPlugin(), 0, 1L)
         } else {
             player.sendMessage("ITEM")
             val display = player.world.spawn(loc, ItemDisplay::class.java)
@@ -48,7 +59,7 @@ class AllItems {
                     display.teleport(location)
                 }
             }.runTaskTimer(Main.getPlugin(), 0, 1L)
-        }               NICHT LÖSCHEN !!!!!!!!!!!!!!!!!!!!!!!!!!*/
+        }*/
     }
 
     fun getItem(player: Player): Material? {
@@ -66,4 +77,17 @@ class AllItems {
     fun sendBossbar(player: Player) {
         player.showBossBar(getBossbar(player))
     }
+
+    /*fun collectedItem(mainHand: MainHand, player: Player) {
+        var main =
+        if (item !is )
+    }*/
+
+    @EventHandler
+    fun itemCollected(event: InventoryPickupItemEvent, player: Player) {
+        if (event.item == item) {
+            newItem(player)
+        }
+    }
+
 }

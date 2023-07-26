@@ -1,6 +1,7 @@
 package me.sirsam.challenges.listeners
 
 import me.sirsam.challenges.ChallengeTimer
+import me.sirsam.challenges.guis.Challenges
 import me.sirsam.challenges.guis.TimerGui
 import me.sirsam.challenges.helpers.ChallengeStatus
 import net.kyori.adventure.text.Component
@@ -36,6 +37,10 @@ class OnInventoryClick : Listener {
                     .clickEvent(ClickEvent.runCommand("/timer reset"))
                 )
                 player.closeInventory()
+            }
+
+            4 -> {
+                player.openInventory(Challenges().inventory)
             }
         }
 
