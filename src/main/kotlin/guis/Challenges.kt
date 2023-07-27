@@ -14,7 +14,8 @@ class Challenges: InventoryHolder {
     override fun getInventory(): Inventory {
         val inv = Bukkit.createInventory(this, 36, Component.text("Challenges", NamedTextColor.DARK_PURPLE))
 
-        inv.setItem(11, gui.item(Material.DIAMOND_HELMET, Component.text("AllItems", NamedTextColor.GREEN)))
+        inv.setItem(0, gui.item(Material.DIAMOND_HELMET, Component.text("AllItems", NamedTextColor.GREEN)))
+        inv.setItem(27, gui.item(Material.SPRUCE_SIGN, Component.text("Main Menu", NamedTextColor.DARK_PURPLE)))
 
         return inv
     }

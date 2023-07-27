@@ -1,6 +1,7 @@
 package me.sirsam.challenges.listeners
 
 import me.sirsam.challenges.ChallengeTimer
+import me.sirsam.challenges.guis.Challenges
 import me.sirsam.challenges.guis.TimerGui
 import me.sirsam.challenges.helpers.ChallengeStatus
 import net.kyori.adventure.text.Component
@@ -14,7 +15,7 @@ class OnInventoryClick : Listener {
     @EventHandler
     fun onInventoryClick(event: InventoryClickEvent) {
         val inv = event.clickedInventory
-        if (inv?.holder !is TimerGui) return
+        if (inv?.holder !is TimerGui && inv?.holder !is Challenges) return
         val timer = ChallengeTimer.timer
         val player = event.whoClicked
 
@@ -40,6 +41,21 @@ class OnInventoryClick : Listener {
 
             26 -> {
                 if (timer.isHidden()) timer.show() else timer.hide()
+                player.openInventory(TimerGui().inventory)
+            }
+
+            0 -> {
+                timer.reset()
+                timer.setStatus(ChallengeStatus.ACTIVE)
+                player.sendMessage(Component.text("The Challenge AllItems started!", NamedTextColor.GREEN))
+                player.closeInventory()
+            }
+
+            4 -> {
+                player.openInventory(Challenges().inventory)
+            }
+
+            27 -> {
                 player.openInventory(TimerGui().inventory)
             }
         }
