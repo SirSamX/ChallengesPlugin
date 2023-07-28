@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerJoinEvent
 import org.bukkit.scheduler.BukkitRunnable
 
 class OnJoin : Listener {
-    val plugin = Main.getPlugin()
+    private val plugin = Main.getPlugin()
 
     @EventHandler
     fun onJoin(event: PlayerJoinEvent) {

@@ -5,7 +5,7 @@ import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.NamedTextColor
 import org.bukkit.Material
 
-enum class ChallengeManager(val challengeName: Component, val clazz: Challenge, val description: List<Component>, val item: Material) {
+enum class ChallengeManager(val challengeName: Component, val clazz: Challenge, val description: MutableList<Component>, val item: Material) {
     TEST(
         challengeName = Component.text("Test", NamedTextColor.DARK_RED),
         clazz = TestChallenge(),
@@ -15,7 +15,7 @@ enum class ChallengeManager(val challengeName: Component, val clazz: Challenge, 
     ALL_ITEMS(
         challengeName = Component.text("All Items", NamedTextColor.GOLD),
         clazz = AllItems(),
-        description = listOf(Component.text("Collect all items!", NamedTextColor.YELLOW)),
+        description = mutableListOf(Component.text("Collect all items!", NamedTextColor.YELLOW)),
         item = Material.ITEM_FRAME
     )
 }

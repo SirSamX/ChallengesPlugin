@@ -65,9 +65,11 @@ class OnInventoryClick : Listener {
                     return
                 }
                 if (Utilities().isChallengeEnabled(challenge, Main.getPlugin())) {
+                    challenge.clazz.onDisable()
                     Utilities().setChallengeStatus(challenge, false, Main.getPlugin())
                     Utilities().broadcast(challenge.challengeName.append(Component.text(" disabled!", NamedTextColor.GREEN)))
                 } else {
+                    challenge.clazz.onEnable()
                     Utilities().setChallengeStatus(challenge, true, Main.getPlugin())
                     Utilities().broadcast(challenge.challengeName.append(Component.text(" enabled!", NamedTextColor.GREEN)))
                 }

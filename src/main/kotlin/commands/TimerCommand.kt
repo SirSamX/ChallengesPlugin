@@ -22,7 +22,7 @@ class TimerCommand : CommandExecutor, TabCompleter {
         when (args[0].lowercase()) {
             "start", "resume" -> {
                 if (timer.getStatus() == ChallengeStatus.ACTIVE) {
-                    sender.sendMessage(utils.prefix.append(Component.text("Timer has already started!", NamedTextColor.GRAY)))
+                    utils.sendMessage(sender, Component.text("Timer has already started!", NamedTextColor.GRAY))
                     return true
                 }
                 timer.setStatus(ChallengeStatus.ACTIVE)
@@ -30,7 +30,7 @@ class TimerCommand : CommandExecutor, TabCompleter {
 
             "stop", "pause" -> {
                 if (timer.getStatus() == ChallengeStatus.PAUSED) {
-                    sender.sendMessage(utils.prefix.append(Component.text("Timer is already paused!", NamedTextColor.GRAY)))
+                    utils.sendMessage(sender, Component.text("Timer is already paused!", NamedTextColor.GRAY))
                     return true
                 }
                 timer.setStatus(ChallengeStatus.PAUSED)
@@ -38,7 +38,7 @@ class TimerCommand : CommandExecutor, TabCompleter {
 
             "reset" -> {
                 if (timer.getStatus() == ChallengeStatus.STOPPED) {
-                    sender.sendMessage(utils.prefix.append(Component.text("Timer is already reset!", NamedTextColor.GRAY)))
+                    utils.sendMessage(sender, Component.text("Timer is already reset!", NamedTextColor.GRAY))
                     return true
                 }
                 timer.reset()
@@ -46,7 +46,7 @@ class TimerCommand : CommandExecutor, TabCompleter {
 
             "show" -> {
                 if (!timer.isHidden()) {
-                    sender.sendMessage(utils.prefix.append(Component.text("Timer is already shown!", NamedTextColor.GRAY)))
+                    utils.sendMessage(sender, Component.text("Timer is already shown!", NamedTextColor.GRAY))
                     return true
                 }
                 timer.show()
@@ -54,7 +54,7 @@ class TimerCommand : CommandExecutor, TabCompleter {
 
             "hide" -> {
                 if (timer.isHidden()) {
-                    sender.sendMessage(utils.prefix.append(Component.text("Timer is already hidden!", NamedTextColor.GRAY)))
+                    utils.sendMessage(sender, Component.text("Timer is already hidden!", NamedTextColor.GRAY))
                     return true
                 }
                 timer.hide()
@@ -62,14 +62,14 @@ class TimerCommand : CommandExecutor, TabCompleter {
 
             "set" -> {
                 if (args.size != 2) {
-                    sender.sendMessage(utils.prefix.append(Component.text("Usage: /timer set <time>", NamedTextColor.GRAY)))
+                    utils.sendMessage(sender, Component.text("Usage: /timer set <time>", NamedTextColor.GRAY))
                     return true
                 }
                 var time: Long? = null
                 try {
                     time = args[1].toLong()
                 } catch (e: NumberFormatException) {
-                    sender.sendMessage(utils.prefix.append(Component.text("Usage: /timer set <time>", NamedTextColor.GRAY)))
+                    utils.sendMessage(sender, Component.text("Usage: /timer set <time>", NamedTextColor.GRAY))
                 }
                 if (time == null) return true
                 timer.set(time)
@@ -77,14 +77,14 @@ class TimerCommand : CommandExecutor, TabCompleter {
 
             "add" -> {
                 if (args.size != 2) {
-                    sender.sendMessage(utils.prefix.append(Component.text("Usage: /timer add <time>", NamedTextColor.GRAY)))
+                    utils.sendMessage(sender, Component.text("Usage: /timer add <time>", NamedTextColor.GRAY))
                     return true
                 }
                 var time: Long? = null
                 try {
                     time = args[1].toLong()
                 } catch (e: NumberFormatException) {
-                    sender.sendMessage(utils.prefix.append(Component.text("<time> must be numeric!", NamedTextColor.GRAY)))
+                    utils.sendMessage(sender, Component.text("<time> must be numeric!", NamedTextColor.GRAY))
                 }
                 if (time == null) return true
                 timer.add(time)
@@ -92,14 +92,14 @@ class TimerCommand : CommandExecutor, TabCompleter {
 
             "remove" -> {
                 if (args.size != 2) {
-                    sender.sendMessage(utils.prefix.append(Component.text("Usage: /timer remove <time>", NamedTextColor.GRAY)))
+                    utils.sendMessage(sender, Component.text("Usage: /timer remove <time>", NamedTextColor.GRAY))
                     return true
                 }
                 var time: Long? = null
                 try {
                     time = args[1].toLong()
                 } catch (e: NumberFormatException) {
-                    sender.sendMessage(utils.prefix.append(Component.text("<time> must be numeric!", NamedTextColor.GRAY)))
+                    utils.sendMessage(sender, Component.text("<time> must be numeric!", NamedTextColor.GRAY))
                 }
                 if (time == null) return true
                 timer.remove(time)

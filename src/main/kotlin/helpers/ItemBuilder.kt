@@ -7,7 +7,15 @@ import org.bukkit.enchantments.Enchantment
 import org.bukkit.inventory.ItemFlag
 import org.bukkit.inventory.ItemStack
 
-class ItemBuilder(var material: Material, var name: Component, var lore: List<Component>? = null, var amount: Int = 1, var glint: Boolean = false) {
+class ItemBuilder(var material: Material, var name: Component, var lore: MutableList<Component>? = null, var amount: Int = 1, var glint: Boolean = false) {
+    init {
+        if (!lore.isNullOrEmpty()) {
+            lore!!.forEachIndexed { index, line ->
+                lore!![index] = line.decoration(TextDecoration.ITALIC, false)
+            }
+        }
+    }
+
     fun item(): ItemStack {
         val item = ItemStack(material, amount)
         val meta = item.itemMeta

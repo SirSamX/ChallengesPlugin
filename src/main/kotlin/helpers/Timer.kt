@@ -95,23 +95,23 @@ class Timer {
     fun set(seconds: Long, broadcast: Boolean = true) {
         this.seconds = seconds
 
-        if (broadcast) return
-        utils.broadcast(utils.prefix.append(Component.text("Timer set to $seconds seconds!", NamedTextColor.GRAY)))
+        if (!broadcast) return
+        utils.broadcast(Component.text("Timer set to $seconds seconds!", NamedTextColor.GRAY))
     }
 
     fun add(seconds: Long, broadcast: Boolean = true) {
         this.seconds += seconds
 
-        if (broadcast) return
-        utils.broadcast(utils.prefix.append(Component.text("Added $seconds seconds!", NamedTextColor.GRAY)))
+        if (!broadcast) return
+        utils.broadcast(Component.text("Added $seconds seconds!", NamedTextColor.GRAY))
 
     }
 
     fun remove(seconds: Long, broadcast: Boolean = true) {
         this.seconds -= seconds
 
-        if (broadcast) return
-        utils.broadcast(utils.prefix.append(Component.text("Removed $seconds seconds!", NamedTextColor.GRAY)))
+        if (!broadcast) return
+        utils.broadcast(Component.text("Removed $seconds seconds!", NamedTextColor.GRAY))
 
     }
 

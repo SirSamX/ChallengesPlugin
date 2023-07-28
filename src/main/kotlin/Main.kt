@@ -1,5 +1,6 @@
 package me.sirsam.challenges
 
+import me.sirsam.challenges.challanges.AllItems
 import me.sirsam.challenges.challanges.ChallengeManager
 import me.sirsam.challenges.commands.ChallengeCommand
 import me.sirsam.challenges.commands.Kit
@@ -27,10 +28,9 @@ class Main : JavaPlugin() {
         registerCommands()
         registerEvents()
         try {
-            ChallengeTimer.timer.set(config.getLong("timer.seconds"))
+            ChallengeTimer.timer.set(config.getLong("timer.seconds"), false)
             ChallengeTimer.timer.setStatus(ChallengeStatus.valueOf(config.getString("timer.status")!!), false)
         } catch (_: NullPointerException) {}
-        utils.setChallengeStatus(ChallengeManager.ALL_ITEMS, true, this)
         enableChallenges()
 
         logger.info("Plugin enabled!")
@@ -69,5 +69,6 @@ class Main : JavaPlugin() {
     private fun registerEvents() {
         Bukkit.getPluginManager().registerEvents(OnInventoryClick(), this)
         Bukkit.getPluginManager().registerEvents(OnJoin(), this)
+        Bukkit.getPluginManager().registerEvents(AllItems(), this)
     }
 }
