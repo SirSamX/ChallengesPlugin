@@ -27,7 +27,7 @@ class Utilities {
 
     fun isNumeric(input: String): Boolean { return input.toDoubleOrNull() != null }
 
-    fun isEnabled(challenge: ChallengeManager, plugin: JavaPlugin): Boolean { return plugin.config.getBoolean("challenges.${challenge.namespace}.enabled") }
+    fun isChallengeEnabled(challenge: ChallengeManager, plugin: JavaPlugin): Boolean { return plugin.config.getBoolean("challenges.${challenge.name}.enabled") }
 
-    fun setEnabled(challenge: ChallengeManager, enabled: Boolean, plugin: JavaPlugin) { plugin.config.set("challenges.${challenge.namespace}.enabled", enabled) }
+    fun setChallengeStatus(challenge: ChallengeManager, enabled: Boolean, plugin: JavaPlugin) { plugin.config.set("challenges.${challenge.name}.enabled", enabled) }
 }

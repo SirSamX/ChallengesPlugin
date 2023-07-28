@@ -4,6 +4,7 @@ import me.sirsam.challenges.challanges.ChallengeManager
 import me.sirsam.challenges.commands.ChallengeCommand
 import me.sirsam.challenges.commands.Kit
 import me.sirsam.challenges.commands.TimerCommand
+import me.sirsam.challenges.helpers.ChallengeStatus
 import me.sirsam.challenges.helpers.Utilities
 import me.sirsam.challenges.listeners.OnInventoryClick
 import me.sirsam.challenges.listeners.OnJoin
@@ -25,14 +26,18 @@ class Main : JavaPlugin() {
         instance = this
         registerCommands()
         registerEvents()
-        utils.setEnabled(ChallengeManager.ALL_ITEMS, true, this)
+        try {
+            ChallengeTimer.timer.set(config.getLong("timer.seconds"))
+            ChallengeTimer.timer.setStatus(ChallengeStatus.valueOf(config.getString("timer.status")!!), false)
+        } catch (_: NullPointerException) {}
+        utils.setChallengeStatus(ChallengeManager.ALL_ITEMS, true, this)
         enableChallenges()
 
         logger.info("Plugin enabled!")
     }
 
     override fun onDisable() {
-        config.set("timer.status", ChallengeTimer.timer.getStatus())
+        config.set("timer.status", ChallengeTimer.timer.getStatus().name)
         config.set("timer.seconds", ChallengeTimer.timer.get())
         disableChallenges()
         saveConfig()
@@ -41,16 +46,14 @@ class Main : JavaPlugin() {
     }
 
     private fun enableChallenges() {
-        ChallengeManager.values().forEach {
-                challenge ->
-            if (utils.isEnabled(challenge, this)) challenge.clazz.onPluginEnable()
+        for (challenge in ChallengeManager.values()) {
+            if (utils.isChallengeEnabled(challenge, this)) challenge.clazz.onEnable()
         }
     }
 
     private fun disableChallenges() {
-        ChallengeManager.values().forEach {
-            challenge ->
-            if (utils.isEnabled(challenge, this)) challenge.clazz.onPluginDisable()
+        for (challenge in ChallengeManager.values()) {
+            if (utils.isChallengeEnabled(challenge, this)) challenge.clazz.onDisable()
         }
     }
 

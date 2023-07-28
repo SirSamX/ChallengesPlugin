@@ -19,6 +19,7 @@ class Timer {
         object : BukkitRunnable() {
             override fun run() {
                 update()
+                if (status != ChallengeStatus.ACTIVE) return
                 seconds++
             }
         }.runTaskTimer(plugin, 0, 20)
