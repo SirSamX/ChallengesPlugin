@@ -37,5 +37,26 @@ class Utilities {
 
     fun isChallengeEnabled(challenge: ChallengeManager, plugin: JavaPlugin): Boolean { return plugin.config.getBoolean("challenges.${challenge.name}.enabled") }
 
-    fun setChallengeStatus(challenge: ChallengeManager, enabled: Boolean, plugin: JavaPlugin) { plugin.config.set("challenges.${challenge.name}.enabled", enabled) }
+    fun setChallengeStatus(challenge: ChallengeManager, enabled: Boolean, plugin: JavaPlugin, broadcast: Boolean = true) {
+        if (enabled) {
+            challenge.clazz.onEnable()
+            if (broadcast) {
+                Utilities().broadcast(challenge.challengeName.append(Component.text(" enabled!", NamedTextColor.GREEN)))
+            }
+        } else {
+            challenge.clazz.onDisable()
+            if (broadcast) {
+                Utilities().broadcast(challenge.challengeName.append(Component.text(" disabled!", NamedTextColor.GREEN)))
+            }
+        }
+        plugin.config.set("challenges.${challenge.name}.enabled", enabled)
+    }
+
+    fun toggleChallengeStatus(challenge: ChallengeManager, plugin: JavaPlugin, broadcast: Boolean = true) {
+        if (isChallengeEnabled(challenge, plugin)) {
+            setChallengeStatus(challenge, false, plugin, broadcast)
+        } else {
+            setChallengeStatus(challenge, true, plugin, broadcast)
+        }
+    }
 }

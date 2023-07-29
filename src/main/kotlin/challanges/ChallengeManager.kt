@@ -17,5 +17,17 @@ enum class ChallengeManager(val challengeName: Component, val clazz: Challenge, 
         clazz = AllItems(),
         description = mutableListOf(Component.text("Collect all items!", NamedTextColor.YELLOW)),
         item = Material.ITEM_FRAME
-    )
+    ),
+    FALLING_ANVILS(
+        challengeName = Component.text("Falling Anvils", NamedTextColor.DARK_GRAY),
+        clazz = FallingAnvils(),
+        description = mutableListOf(Component.text("Anvils spawn 35 blocks above you!", NamedTextColor.YELLOW), Component.text("...always", NamedTextColor.GRAY)),
+        item = Material.ANVIL
+    );
+
+    companion object {
+        fun getNames(): List<String> {
+            return ChallengeManager.values().map { it.name }
+        }
+    }
 }
