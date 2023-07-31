@@ -2,6 +2,7 @@ package me.sirsam.challenges
 
 import me.sirsam.challenges.challanges.AllItems
 import me.sirsam.challenges.challanges.ChallengeManager
+import me.sirsam.challenges.challanges.LevelBorder
 import me.sirsam.challenges.commands.ChallengeCommand
 import me.sirsam.challenges.commands.Kit
 import me.sirsam.challenges.commands.TimerCommand
@@ -70,5 +71,6 @@ class Main : JavaPlugin() {
         Bukkit.getPluginManager().registerEvents(OnInventoryClick(), this)
         Bukkit.getPluginManager().registerEvents(OnJoin(), this)
         Bukkit.getPluginManager().registerEvents(AllItems(), this)
+        Bukkit.getPluginManager().registerEvents(LevelBorder(), this)
     }
 }

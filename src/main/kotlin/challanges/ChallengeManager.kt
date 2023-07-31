@@ -23,6 +23,12 @@ enum class ChallengeManager(val challengeName: Component, val clazz: Challenge, 
         clazz = FallingAnvils(),
         description = mutableListOf(Component.text("Anvils spawn 35 blocks above you!", NamedTextColor.YELLOW), Component.text("...always", NamedTextColor.GRAY)),
         item = Material.ANVIL
+    ),
+    LevelBorder(
+      challengeName = Component.text("LevelBorder", NamedTextColor.GREEN),
+      clazz = LevelBorder(),
+      description = mutableListOf(Component.text("Per Level the bordersize will increase!", NamedTextColor.GREEN)),
+      item = Material.EXPERIENCE_BOTTLE
     );
 
     companion object {
